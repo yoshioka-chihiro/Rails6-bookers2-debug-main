@@ -1,7 +1,12 @@
 class BooksController < ApplicationController
 
+  before_action :authenticate_user!, expect: [:top]
+  before_action :correct_user, only: [:top, :edit]
+
   def show
     @book = Book.find(params[:id])
+    @user = @book.user
+    @newbook = Book.new
   end
 
   def index
@@ -15,6 +20,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
@@ -36,9 +42,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     redirect_to books_path
   end
 
@@ -47,4 +53,13 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
+  def correct_user
+    #idのついた本を１つ選ぶ
+    @book = Book.find(params[:id])
+    #選んだ本をもってるUserであると定義
+    @user = @book.user
+    redirect_to(books_path) unless @user == current_user
+  end
+
 end

@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update]
+
+  before_action :authenticate_user!, expect: [:top]
+  before_action :ensure_correct_user, only: [:update, :edit]
+
+  def create
+    @user = User.new(name:params[:name], email:params[:email], image_name: "default_image.jpg")
+  end
 
   def show
     @user = User.find(params[:id])
