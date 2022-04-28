@@ -1,16 +1,23 @@
 class BookCommentsController < ApplicationController
 
-  def create
-    @book = Book.find(params[:book_id])
-    @comment = current_user.book_comments.new(book_comment_params)
-    @comment.book_id = @book.id
-    @comment.save
-    format.js { render :index }
 
+
+  def create
+    # コメントをする対象の投稿(travel_record)のインスタンスを作成
+    @book = Book.find(params[:book_id])
+    #投稿に紐づいたコメントを作成
+    @book_comment = @book.book_comments.new(book_comment_params)
+    # コメント投稿者(user)のidを代入
+    @book_comment.user_id = current_user.id
+    @book_comment.save
+    @book = Book.find(params[:book_id])
+    render :index
   end
 
    def destroy
-    BookComment.find(params[:id]).destroy
+    @book = Book.find(params[:book_id])
+    @book_comment = BookComment.find(params[:id])
+    @book_comment.destroy
     render :index
    end
 

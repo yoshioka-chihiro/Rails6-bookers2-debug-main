@@ -1,0 +1,2 @@
+$("#comments_area").html("<%= j(render 'index', { book_comments: @bookcomment.book.book_comments.order(created_at: :desc)} ) %>");
+$("#book_comment_comment").val('');
