@@ -10,27 +10,24 @@
   </div>
 
 
-  <div class="form-group row" id="star">
-    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :star, id: :review_star %>
-  </div>
-
   <!-- 評価javascript -->
   <div class="form-group" id="star">
-    <%= f.label :star %>
+    <%= f.label :Rate %>
     <%= f.hidden_field :star, id: :review_star %>
   </div>
 
-<script>
+  <script>
  $('#star').raty({
-   size: 36,
-   starOff: "#{asset_path('star-off.png')}",
-   starOn: "#{asset_path('star-on.png')}",
-   starHalf: "#{asset_path('star-half.png')}",
-   scoreName: 'review[rate]', # reviewカラムに保存するので忘れないように
-   half: true, # ★の半分の入力を行う
+   size     : 36,
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   scoreName: 'book[rate]',
+   half: true,
  });
  </script>
+
+
 
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
