@@ -12,7 +12,11 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    if params[:option] == "A" || params[:option] == nil
+     @books = Book.all.order(created_at: :desc)
+    elsif params[:option] == "B"
+     @books = Book.all.order(star: :desc)
+    end
     @book = Book.new
   end
 

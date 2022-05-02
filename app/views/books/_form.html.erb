@@ -10,9 +10,11 @@
   </div>
 
   <!-- 評価javascript -->
+  <% if book.id == nil %>
   <div class="form-group" id="star">
     <%= f.label :Rate %>
-    <%= f.hidden_field :star, id: :review_star %>
+    <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+
   </div>
 
   <script>
@@ -25,6 +27,22 @@
      half: true,
    });
  </script>
+ <% else %>
+    <div class="hoge">
+    <div id="star-rate-<%= book.id %>"></div>
+    <script>
+    $('#star-rate-<%= book.id %>').raty({
+    size: 26,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= book.star %>,
+    });
+    </script>
+  </div>
+ <% end %>
 
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>

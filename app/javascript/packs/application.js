@@ -12,10 +12,9 @@ import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
-import "../raty.js"
 // 星評価のために追加
+import "../raty.js"
 window.jQuery = window.$ = require('jquery')
-require("../raty")
 
 Rails.start()
 Turbolinks.start()
