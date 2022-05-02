@@ -1,0 +1,31 @@
+<%= form_with model:book,local:true do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control book_title' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :opinion %>
+    <%= f.text_area :body, class: 'form-control book_body' %>
+  </div>
+
+  <div class="hoge">
+    <div id="star-rate-<%= @book.id %>"></div>
+    <script>
+    $('#star-rate-<%= @book.id %>').raty({
+    size: 26,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @book.star %>,
+    });
+    </script>
+  </div>
+
+<br>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

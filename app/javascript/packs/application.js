@@ -13,6 +13,7 @@ import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
 import "../raty.js"
+// 星評価のために追加
 window.jQuery = window.$ = require('jquery')
 require("../raty")
 

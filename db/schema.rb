@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_101416) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "star"
+    t.float "star"
   end
 
   create_table "favorites", force: :cascade do |t|
