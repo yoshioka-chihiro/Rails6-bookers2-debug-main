@@ -1,0 +1,24 @@
+<!--ユーザーインフォのフォローボタンの非同期化-->
+$('#followbtn_info').html("<%= j(render "relationships/follow_info", user: @user) %>");
+<!--ユーザーインデックスのフォローボタンの非同期化-->
+$('#followbtn_index_<%= @user.id %>').html("<%= j(render "relationships/follow_index", user: @user) %>");
+
+
+
+<!--ユーザーインフォのフォロー数・フォロワー数の更新-->
+  $('#follow_info_count').html("<%= j(render 'relationships/follow_info_count', user: @current_user) %>");
+  $('#follower_info_count').html("<%= j(render 'relationships/follower_info_count', user: @current_user) %>");
+
+  $('#follow_info_count').html("<%= j(render 'relationships/follow_info_count', user: @user) %>");
+  $('#follower_info_count').html("<%= j(render 'relationships/follower_info_count', user: @user) %>");
+
+
+<!--ユーザーインデックスのフォロー数・フォロワー数の更新-->
+
+<!--フォローボタンを押された人のカウント-->
+$('#follow_index_count_<%= @user.id %>').html("<%= j(render 'relationships/follow_index_count', user: @user) %>");
+$('#follower_index_count_<%= @user.id %>').html("<%= j(render 'relationships/follower_index_count', user: @user) %>");
+
+<!--フォローボタンを押した人（current_user）のフォロー数・フォロワー数-->
+$('#follow_index_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follow_index_count', user: @current_user) %>");
+$('#follower_index_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follower_index_count', user: @current_user) %>");

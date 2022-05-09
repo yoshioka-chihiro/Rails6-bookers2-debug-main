@@ -8,21 +8,12 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
-  <tr>
-    <th>follows</th>
-    <th>
-      <%=link_to user_followers_path(user) do %>
-      <%= user.followings.count %>
-      <% end %>
-    </th>
+  <tr id="follow_info_count">
+    <%= render 'relationships/follow_info_count', user: user %>
   </tr>
-  <tr>
-    <th>followers</th>
-    <th>
-      <%=link_to user_followers_path(user) do %>
-      <%= user.followers.count %>
-      <% end %>
-      </th>
+
+  <tr id="follower_info_count">
+    <%= render 'relationships/follower_info_count', user: user %>
   </tr>
 </table>
 
@@ -33,5 +24,5 @@
   <% end %>
 </div>
 <% else %>
-  <div class='row' id='followbtn'><%= render 'relationships/follow', user: user %></div>
+  <div class='row' id='followbtn_info'><%= render 'relationships/follow_info', user: user %></div>
 <% end %>
