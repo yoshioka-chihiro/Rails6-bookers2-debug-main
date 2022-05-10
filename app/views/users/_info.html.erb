@@ -8,7 +8,7 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
-  <!--フォロー数カウントの非同期化の際にindexページとshowページで指定するuserを変えるためのid-->
+  <!--フォロー数カウントの非同期化の際にindexページとshowページで指定するuserを変えるためのidです-->
   <tr id="follow_info_count_<%= user.id %>">
     <%= render 'relationships/follow_info_count', user: user %>
   </tr>
