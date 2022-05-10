@@ -6,11 +6,13 @@ $('#followbtn_index_<%= @user.id %>').html("<%= j(render "relationships/follow_i
 
 
 <!--ユーザーインフォのフォロー数・フォロワー数の更新-->
-  $('#follow_info_count').html("<%= j(render 'relationships/follow_info_count', user: @current_user) %>");
-  $('#follower_info_count').html("<%= j(render 'relationships/follower_info_count', user: @current_user) %>");
 
-  $('#follow_info_count').html("<%= j(render 'relationships/follow_info_count', user: @user) %>");
-  $('#follower_info_count').html("<%= j(render 'relationships/follower_info_count', user: @user) %>");
+<!--users/indexページ（ログイン中のユーザーの情報を取得）-->
+  $('#follow_info_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follow_info_count', user: @current_user) %>");
+  $('#follower_info_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follower_info_count', user: @current_user) %>");
+<!--users/showページ（そのページのidを持つユーザーの情報を更新）-->
+  $('#follow_info_count_<%= @user.id %>').html("<%= j(render 'relationships/follow_info_count', user: @user) %>");
+  $('#follower_info_count_<%= @user.id %>').html("<%= j(render 'relationships/follower_info_count', user: @user) %>");
 
 
 <!--ユーザーインデックスのフォロー数・フォロワー数の更新-->
@@ -18,7 +20,6 @@ $('#followbtn_index_<%= @user.id %>').html("<%= j(render "relationships/follow_i
 <!--フォローボタンを押された人のカウント-->
 $('#follow_index_count_<%= @user.id %>').html("<%= j(render 'relationships/follow_index_count', user: @user) %>");
 $('#follower_index_count_<%= @user.id %>').html("<%= j(render 'relationships/follower_index_count', user: @user) %>");
-
 <!--フォローボタンを押した人（current_user）のフォロー数・フォロワー数-->
 $('#follow_index_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follow_index_count', user: @current_user) %>");
 $('#follower_index_count_<%= @current_user.id %>').html("<%= j(render 'relationships/follower_index_count', user: @current_user) %>");

@@ -8,14 +8,13 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
-  <tr id="follow_info_count">
+  <tr id="follow_info_count_<%= user.id %>">
     <%= render 'relationships/follow_info_count', user: user %>
   </tr>
-
-  <tr id="follower_info_count">
+  <tr id="follower_info_count_<%= user.id %>">
     <%= render 'relationships/follower_info_count', user: user %>
   </tr>
-</table>
+  </table>
 
 <% if user == current_user %>
 <div class='row'>
